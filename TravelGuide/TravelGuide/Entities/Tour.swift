@@ -14,6 +14,7 @@ struct Tour: Codable {
     let location: Location?
     let images: [Image]?
     let reviews: Reviews?
+    let contentProvider: ContentProvider
 }
 
 struct Location: Codable {
@@ -26,7 +27,10 @@ struct Reviews: Codable {
 
 struct Image: Codable {
     let uuid: String?
-    let size: Int?
+}
+
+struct ContentProvider: Codable {
+    let uuid, name: String
 }
 
 enum Category: String, Codable {

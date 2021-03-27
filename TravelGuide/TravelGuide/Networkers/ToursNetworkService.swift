@@ -42,7 +42,6 @@ class ToursNetworkService {
                     print(error)
                     completion(.failure(.getError))
                 }
-                completion(.success([]))
             }
         }
     }
