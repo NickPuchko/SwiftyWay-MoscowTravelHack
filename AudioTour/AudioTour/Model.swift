@@ -57,11 +57,11 @@ enum WelcomeType: String, Codable {
 // MARK: - WelcomeElement
 struct DetailedTour: Codable {
     let uuid: String
-    let type, category: String
-    let duration, distance: Int
+    let category: String
+    let duration: Int
+    let distance: Int
     let placement: String
     let map: Map
-    let hash: String
     let size: Int
     let reviews: Reviews
     let content: [Content]
@@ -92,7 +92,6 @@ struct Audio: Codable {
 // MARK: - Child
 struct Child: Codable {
     let uuid: String
-    let type: ChildType
     let hidden: Bool
     let triggerZones: [TriggerZone]
     let images: [Audio]
@@ -108,25 +107,9 @@ struct ChildLocation: Codable {
 
 // MARK: - TriggerZone
 struct TriggerZone: Codable {
-    let circleAltitude: Int
-    let type: TriggerZoneType
-    let circleLatitude, circleLongitude, circleRadius: Double
-
-    enum CodingKeys: String, CodingKey {
-        case circleAltitude = "circle_altitude"
-        case type
-        case circleLatitude = "circle_latitude"
-        case circleLongitude = "circle_longitude"
-        case circleRadius = "circle_radius"
-    }
-}
-
-enum TriggerZoneType: String, Codable {
-    case circle = "circle"
-}
-
-enum ChildType: String, Codable {
-    case touristAttraction = "tourist_attraction"
+    let circleLatitude: Double
+    let circleLongitude: Double
+    let circleRadius: Double
 }
 
 // MARK: - Playback
@@ -134,5 +117,3 @@ struct Playback: Codable {
     let type: String
     let order: [String]
 }
-
-typealias BaseRouteList = [DetailedTour]

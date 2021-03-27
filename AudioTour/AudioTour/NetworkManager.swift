@@ -49,8 +49,8 @@ class NetworkManager {
 }
 
 extension NetworkManager {
-    func fetchDataTours(symbol: String, completion: @escaping (Result<[Tour], Error>) -> Void) {
-        let tourURL = makeUrl(for: symbol)
+    func getTours(city: String, completion: @escaping (Result<[Tour], Error>) -> Void) {
+        let tourURL = makeUrl(for: city)
         dataTask = URLSession.shared.dataTask(with: tourURL!) { (data, response, error) in
             if let error = error {
                print("DataTask error: \(error.localizedDescription)")
@@ -64,7 +64,7 @@ extension NetworkManager {
             do {
                 
                 let jsonData = try self.decoder.decode([Tour].self, from: data)
-                print(jsonData)
+                print(String(data: data, encoding: .utf8))
                 completion(.success(jsonData))
             } catch let error {
                 completion(.failure(error))
@@ -73,31 +73,8 @@ extension NetworkManager {
         dataTask?.resume()
     }
     
-    func fetchDataTour(symbol: String, completion: @escaping (Result<[DetailedTour], Error>) -> Void) {
-        let tourURL = makeUrl(for: symbol)
-        dataTask = URLSession.shared.dataTask(with: tourURL!) { (data, response, error) in
-            
-            if let error = error {
-               print("DataTask error: \(error.localizedDescription)")
-               return
-            }
-            guard let response = response as? HTTPURLResponse, let data = data else {
-               print("Empty Response")
-               return
-            }
-            print("Response status code: \(response.statusCode)")
-            do {
-                let jsonData = try self.decoder.decode([DetailedTour].self, from: data)
-                print(jsonData)
-                completion(.success(jsonData))
-            } catch let error {
-                completion(.failure(error))
-            }
-        }
-        dataTask?.resume()
-    }
-    func fetchAudio(uuid: String, audio_uuid: String, completion: @escaping (Result<Data, Error>) -> Void) {
-        let audioURL = makeUrlForAudio(uuid: uuid, audio_uuid: audio_uuid)
+    func getAudio(provider_uuid: String, audio_uuid: String, completion: @escaping (Result<Data, Error>) -> Void) {
+        let audioURL = makeUrlForAudio(uuid: provider_uuid, audio_uuid: audio_uuid)
         dataTask = URLSession.shared.dataTask(with: audioURL!) { (data, response, error) in
             if let error = error {
                print("DataTask error: \(error.localizedDescription)")
@@ -113,8 +90,8 @@ extension NetworkManager {
         dataTask?.resume()
     }
     
-    func fetchImage(uuid: String, image_uuid: String, completion: @escaping (Result<Data, Error>) -> Void) {
-        let audioURL = makeUrlForImage(uuid: uuid, image_uuid: image_uuid)
+    func getImage(provider_uuid: String, image_uuid: String, completion: @escaping (Result<Data, Error>) -> Void) {
+        let audioURL = makeUrlForImage(uuid: provider_uuid, image_uuid: image_uuid)
         dataTask = URLSession.shared.dataTask(with: audioURL!) { (data, response, error) in
             if let error = error {
                print("DataTask error: \(error.localizedDescription)")

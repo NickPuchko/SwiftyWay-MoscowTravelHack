@@ -19,7 +19,7 @@ class FeedModel {
     var tours: [Tour] = []
     
     func loadTours(in city: String) {
-        networkManager.fetchDataTours(symbol: "Мурманск") { [unowned self] result in
+        networkManager.getTours(city: "Мурманск") { [unowned self] result in
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
