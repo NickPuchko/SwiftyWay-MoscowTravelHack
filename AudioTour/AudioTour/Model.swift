@@ -6,7 +6,7 @@
 import Foundation
 
 // MARK: - WelcomeElement
-struct WelcomeElement: Codable {
+struct SearchObjectsRoutesElement: Codable {
     let uuid: String
     let status: Status
     let type: WelcomeType
@@ -89,7 +89,6 @@ enum Status: String, Codable {
 // MARK: - Translation
 struct Translation: Codable {
     let name: String
-    //let language: Language
 }
 
 // MARK: - ContentProvider
@@ -125,6 +124,8 @@ struct Country: Codable {
 
 enum Hash: String, Codable {
     case the9932Af8F3A0160Cb09Bee59A25Ba13Ce230A565D = "9932af8f3a0160cb09bee59a25ba13ce230a565d"
+    case d41D8Cd98F00B204E9800998Ecf8427E = "d41d8cd98f00b204e9800998ecf8427e"
+    case dfcb82Df86Ef22D1B835A0C7E4B52530 = "dfcb82df86ef22d1b835a0c7e4b52530"
 }
 
 // MARK: - CountryLocation
@@ -185,7 +186,7 @@ struct Publisher: Codable {
     let contentProvider: ContentProvider
 
     enum CodingKeys: String, CodingKey {
-        case uuid, type, status, hash, title, summary,  images
+        case uuid, type, status, hash, title, summary, images
         case contentProvider = "content_provider"
     }
 }
@@ -205,10 +206,125 @@ struct Reviews: Codable {
         case reviewsCount = "reviews_count"
     }
 }
-
 enum WelcomeType: String, Codable {
     case museum = "museum"
     case tour = "tour"
 }
 
-typealias Welcome = [WelcomeElement]
+typealias SearchObjectsRoutesList = [SearchObjectsRoutesElement]
+
+
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
+//
+//   let welcome = try? newJSONDecoder().decode(Welcome.self, from: jsonData)
+
+import Foundation
+
+// MARK: - WelcomeElement
+struct BaseRoute: Codable {
+    let uuid: String
+    let status: Status
+    let type, category: String
+    let duration, distance: Int
+    let placement: String
+    let map: Map
+    let hash: String
+    let size: Int
+    let city: City
+    let country: Country
+    let contentProvider: ContentProvider
+    let reviews: Reviews
+    let content: [Content]
+    let location: CityLocation
+
+    enum CodingKeys: String, CodingKey {
+        case uuid, status, type, category, duration, distance, placement, map, hash, size, city, country
+        case contentProvider = "content_provider"
+        case reviews, content, location
+    }
+}
+
+// MARK: - Image
+struct Image: Codable {
+    let uuid, type: String
+    let order: Int
+}
+// MARK: - Content
+struct Content: Codable {
+    let audio, images: [Audio]
+    let playback: Playback
+    let summary, desc, title: String
+    let children: [Child]
+}
+
+// MARK: - Audio
+struct Audio: Codable {
+    let uuid: String
+    let type: AudioType
+    let duration: Int?
+    let order: Int
+    let hash: Hash
+    let size: Int
+}
+enum AudioType: String, Codable {
+    case story = "story"
+}
+
+// MARK: - Child
+struct Child: Codable {
+    let uuid: String
+    let status: Status
+    let type: ChildType
+    let hidden: Bool
+    let hash: String
+    let triggerZones: [TriggerZone]
+    let contentProvider: ContentProvider
+    let images: [Audio]
+    let location: ChildLocation
+    let summary, desc, title: String
+
+    enum CodingKeys: String, CodingKey {
+        case uuid, status, type, hidden, hash
+        case triggerZones = "trigger_zones"
+        case contentProvider = "content_provider"
+        case images, location, summary, desc, title
+    }
+}
+
+// MARK: - ChildLocation
+struct ChildLocation: Codable {
+    let altitude: Int
+    let latitude, longitude: Double
+}
+
+// MARK: - TriggerZone
+struct TriggerZone: Codable {
+    let circleAltitude: Int
+    let type: TriggerZoneType
+    let circleLatitude, circleLongitude, circleRadius: Double
+
+    enum CodingKeys: String, CodingKey {
+        case circleAltitude = "circle_altitude"
+        case type
+        case circleLatitude = "circle_latitude"
+        case circleLongitude = "circle_longitude"
+        case circleRadius = "circle_radius"
+    }
+}
+
+enum TriggerZoneType: String, Codable {
+    case circle = "circle"
+}
+
+enum ChildType: String, Codable {
+    case touristAttraction = "tourist_attraction"
+}
+
+// MARK: - Playback
+struct Playback: Codable {
+    let type: String
+    let order: [String]
+}
+
+typealias BaseRouteList = [BaseRoute]
