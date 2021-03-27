@@ -10,6 +10,8 @@
 		01789E96260F39B00088F773 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01789E95260F39B00088F773 /* FeedView.swift */; };
 		01789E9B260F43E70088F773 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01789E9A260F43E70088F773 /* MainNavigationController.swift */; };
 		3C14F8CA9E8B7F637411A2EA /* Pods_AudioTour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91DDBCE348C3209AFEA6CAE4 /* Pods_AudioTour.framework */; };
+		73F87A5D260F47E8000DD90D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F87A5C260F47E8000DD90D /* NetworkManager.swift */; };
+		73F87A60260F47F2000DD90D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F87A5F260F47F2000DD90D /* Model.swift */; };
 		C3D4C47D260E6309000BC7CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D4C47C260E6309000BC7CB /* AppDelegate.swift */; };
 		C3D4C481260E6309000BC7CB /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D4C480260E6309000BC7CB /* FeedViewController.swift */; };
 		C3D4C486260E630A000BC7CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3D4C485260E630A000BC7CB /* Assets.xcassets */; };
@@ -19,6 +21,8 @@
 /* Begin PBXFileReference section */
 		01789E95260F39B00088F773 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		01789E9A260F43E70088F773 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		73F87A5C260F47E8000DD90D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		73F87A5F260F47F2000DD90D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		782059BC60679A247AA76DD6 /* Pods-AudioTour.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioTour.release.xcconfig"; path = "Target Support Files/Pods-AudioTour/Pods-AudioTour.release.xcconfig"; sourceTree = "<group>"; };
 		91DDBCE348C3209AFEA6CAE4 /* Pods_AudioTour.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudioTour.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3D4C479260E6309000BC7CB /* AudioTour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioTour.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +89,8 @@
 				C3D4C485260E630A000BC7CB /* Assets.xcassets */,
 				C3D4C487260E630A000BC7CB /* LaunchScreen.storyboard */,
 				C3D4C48A260E630A000BC7CB /* Info.plist */,
+				73F87A5C260F47E8000DD90D /* NetworkManager.swift */,
+				73F87A5F260F47F2000DD90D /* Model.swift */,
 				01789E9A260F43E70088F773 /* MainNavigationController.swift */,
 			);
 			path = AudioTour;
@@ -214,6 +220,8 @@
 			files = (
 				C3D4C481260E6309000BC7CB /* FeedViewController.swift in Sources */,
 				01789E96260F39B00088F773 /* FeedView.swift in Sources */,
+				73F87A5D260F47E8000DD90D /* NetworkManager.swift in Sources */,
+				73F87A60260F47F2000DD90D /* Model.swift in Sources */,
 				01789E9B260F43E70088F773 /* MainNavigationController.swift in Sources */,
 				C3D4C47D260E6309000BC7CB /* AppDelegate.swift in Sources */,
 			);
