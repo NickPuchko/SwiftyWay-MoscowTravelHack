@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		01789E96260F39B00088F773 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01789E95260F39B00088F773 /* FeedView.swift */; };
 		01789E9B260F43E70088F773 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01789E9A260F43E70088F773 /* MainNavigationController.swift */; };
+		01789EA4260F51E50088F773 /* TourTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01789EA2260F51E50088F773 /* TourTableViewCell.swift */; };
+		01789EA5260F51E50088F773 /* TourTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01789EA3260F51E50088F773 /* TourTableViewCell.xib */; };
 		3C14F8CA9E8B7F637411A2EA /* Pods_AudioTour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91DDBCE348C3209AFEA6CAE4 /* Pods_AudioTour.framework */; };
 		73F87A5D260F47E8000DD90D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F87A5C260F47E8000DD90D /* NetworkManager.swift */; };
 		73F87A60260F47F2000DD90D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F87A5F260F47F2000DD90D /* Model.swift */; };
@@ -21,6 +23,8 @@
 /* Begin PBXFileReference section */
 		01789E95260F39B00088F773 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		01789E9A260F43E70088F773 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		01789EA2260F51E50088F773 /* TourTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourTableViewCell.swift; sourceTree = "<group>"; };
+		01789EA3260F51E50088F773 /* TourTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TourTableViewCell.xib; sourceTree = "<group>"; };
 		73F87A5C260F47E8000DD90D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		73F87A5F260F47F2000DD90D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		782059BC60679A247AA76DD6 /* Pods-AudioTour.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioTour.release.xcconfig"; path = "Target Support Files/Pods-AudioTour/Pods-AudioTour.release.xcconfig"; sourceTree = "<group>"; };
@@ -50,6 +54,8 @@
 			isa = PBXGroup;
 			children = (
 				C3D4C480260E6309000BC7CB /* FeedViewController.swift */,
+				01789EA2260F51E50088F773 /* TourTableViewCell.swift */,
+				01789EA3260F51E50088F773 /* TourTableViewCell.xib */,
 				01789E95260F39B00088F773 /* FeedView.swift */,
 			);
 			path = Feed;
@@ -166,6 +172,7 @@
 			files = (
 				C3D4C489260E630A000BC7CB /* LaunchScreen.storyboard in Resources */,
 				C3D4C486260E630A000BC7CB /* Assets.xcassets in Resources */,
+				01789EA5260F51E50088F773 /* TourTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +229,7 @@
 				01789E96260F39B00088F773 /* FeedView.swift in Sources */,
 				73F87A5D260F47E8000DD90D /* NetworkManager.swift in Sources */,
 				73F87A60260F47F2000DD90D /* Model.swift in Sources */,
+				01789EA4260F51E50088F773 /* TourTableViewCell.swift in Sources */,
 				01789E9B260F43E70088F773 /* MainNavigationController.swift in Sources */,
 				C3D4C47D260E6309000BC7CB /* AppDelegate.swift in Sources */,
 			);

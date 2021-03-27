@@ -10,18 +10,29 @@ import MapKit
 
 class FeedView: UIView {
     
-    init() {
+//    let searchVC = UISearchController()
+    
+    let toursTableView = UITableView(frame: .zero, style: .plain)
+    
+    init(delegate: FeedViewController) {
         super.init(frame: .zero)
+        
+        toursTableView.delegate = delegate
+        toursTableView.dataSource = delegate
         
         backgroundColor = .white
     }
     
-    private func setupMapView() {
+    private func setupTableView() {
         
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
+            toursTableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            toursTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            toursTableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            toursTableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
         ])
     }
     
