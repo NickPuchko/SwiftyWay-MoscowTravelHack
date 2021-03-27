@@ -39,14 +39,14 @@ extension NetworkManager {
            }
            print("Response status code: \(response.statusCode)")
            do {
-            //print(String(decoding: data, as: UTF8.self))
+            // print(String(decoding: data, as: UTF8.self))
             let decoder = JSONDecoder()
             let jsonData = try decoder.decode(Welcome.self, from: data)
             print(jsonData)
             DispatchQueue.main.async {
                 completion(.success(jsonData))
             }
-           }
+       }
            catch let error {
                 completion(.failure(error))
            }
