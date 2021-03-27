@@ -9,8 +9,13 @@ import Foundation
 
 class FeedModel {
     weak var feedViewController: FeedViewController!
+    var tours: [Tour] = []
     
     init(vc: FeedViewController) {
         feedViewController = vc
+    }
+    
+    func loadTours() {
+        
     }
 }
