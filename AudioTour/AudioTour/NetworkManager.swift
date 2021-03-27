@@ -45,7 +45,7 @@ class NetworkManager {
     
 }
 extension NetworkManager {
-    func fetchDataTour(symbol: String, completion: @escaping (Result<[SearchObjectsRoutesElement], Error>) -> Void) {
+    func fetchDataTours(symbol: String, completion: @escaping (Result<[SearchObjectsRoutesElement], Error>) -> Void) {
         let tourURL = makeUrl(for: symbol)
         dataTask = URLSession.shared.dataTask(with: tourURL!) { (data, response, error) in
             
@@ -73,6 +73,33 @@ extension NetworkManager {
         dataTask?.resume()
     }
     
+    func fetchDataTour(symbol: String, completion: @escaping (Result<[BaseRoute], Error>) -> Void) {
+        let tourURL = makeUrl(for: symbol)
+        dataTask = URLSession.shared.dataTask(with: tourURL!) { (data, response, error) in
+            
+            if let error = error {
+               print("DataTask error: \(error.localizedDescription)")
+               return
+            }
+            guard let response = response as? HTTPURLResponse, let data = data else {
+               print("Empty Response")
+               return
+            }
+            print("Response status code: \(response.statusCode)")
+            do {
+                let decoder = JSONDecoder()
+                let jsonData = try decoder.decode(BaseRouteList.self, from: data)
+                print(jsonData)
+                DispatchQueue.main.async {
+                    completion(.success(jsonData))
+                }
+            }
+            catch let error {
+                completion(.failure(error))
+            }
+        }
+        dataTask?.resume()
+    }
     func fetchAudio(uuid: String, audio_uuid: String, completion: @escaping (Result<Data, Error>) -> Void) {
         let audioURL = makeUrlForAudio(uuid: uuid, audio_uuid: audio_uuid)
         dataTask = URLSession.shared.dataTask(with: audioURL!) { (data, response, error) in
