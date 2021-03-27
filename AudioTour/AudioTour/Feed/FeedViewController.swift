@@ -12,7 +12,7 @@ class FeedViewController: UIViewController {
 
     private var model: FeedModel!
     
-    lazy var feedCellIdentifier = TourTableViewCell.self.description()
+    let feedCellIdentifier = "TourTableViewCell"
     
     var feedView: FeedView {
         view as! FeedView
@@ -31,6 +31,7 @@ class FeedViewController: UIViewController {
     
     private func setupViews() {
         title = "City"
+        feedView.toursTableView.register(UINib(nibName: feedCellIdentifier, bundle: nil), forCellReuseIdentifier: feedCellIdentifier)
     }
 }
 

@@ -21,12 +21,14 @@ class FeedView: UIView {
         toursTableView.dataSource = delegate
         
         setupTableView()
+        setupConstraints()
         
         backgroundColor = .white
     }
     
     private func setupTableView() {
         addSubview(toursTableView)
+        
         toursTableView.translatesAutoresizingMaskIntoConstraints = false
     }
     
