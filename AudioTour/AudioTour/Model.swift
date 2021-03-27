@@ -6,32 +6,48 @@
 import Foundation
 
 // MARK: - WelcomeElement
-struct SearchObjectsRoutesElement: Codable {
+struct Tour: Codable {
     let uuid: String
-    let status: Status
     let type: WelcomeType
     let map: Map
-    let hash: String
     let childrenCount: Int
     let city: City
     let country: Country
     let contentProvider: ContentProvider
     let reviews: Reviews
-    let publisher: Publisher
     let images: [WelcomeImage]
     let location: WelcomeLocation
-    let summary, title: String
+    let title: String
     let category: Category?
     let duration, distance: Int?
-    let placement: Placement?
     let route: String?
 
     enum CodingKeys: String, CodingKey {
-        case uuid, status, type, map, hash
+        case uuid,  type, map
         case childrenCount = "children_count"
         case city, country
         case contentProvider = "content_provider"
-        case reviews, publisher, images, location, summary, title, category, duration, distance, placement, route
+        case reviews, images, location, title, category, duration, distance, route
+    }
+    
+    init(uuid: String, title: String, map: Map, childrenCount: Int, type: WelcomeType, category: Category,
+         duration: Int?, city: City, distance: Int?, route: String, bounds: String, country: Country, contentProvider: ContentProvider, reviews: Reviews, images: [WelcomeImage], location: WelcomeLocation) {
+        self.city = city
+        self.country = country
+        self.contentProvider = contentProvider
+        self.reviews = reviews
+        self.images = images
+        self.location = location
+        self.uuid = uuid
+        self.map = map
+        self.title = title
+        self.childrenCount = childrenCount
+        self.type = type
+        self.category = category
+        self.duration = duration ?? 0
+        self.distance = distance ?? 0
+        self.route = route
+//        self.route = route.split {$0 == ";"}.map {$0.split {$0 == ","}}
     }
 }
 
@@ -44,7 +60,6 @@ enum Category: String, Codable {
 struct City: Codable {
     let uuid: String
     let type: CityType
-    let status: Status
     let translations: [Translation]
     let map: Map
     let hash: String
@@ -81,11 +96,6 @@ struct CityLocation: Codable {
 struct Map: Codable {
     let bounds: String
 }
-
-enum Status: String, Codable {
-    case published = "published"
-}
-
 // MARK: - Translation
 struct Translation: Codable {
     let name: String
@@ -108,7 +118,6 @@ enum Copyright: String, Codable {
 struct Country: Codable {
     let uuid: String
     let type: CountryType
-    let status: Status
     let translations: [Translation]
     let map: Map
     let hash: Hash
@@ -117,7 +126,7 @@ struct Country: Codable {
     let location: CountryLocation
 
     enum CodingKeys: String, CodingKey {
-        case uuid, type, status, translations, map, hash
+        case uuid, type, translations, map, hash
         case title, summary, location
     }
 }
@@ -180,13 +189,12 @@ enum Placement: String, Codable {
 struct Publisher: Codable {
     let uuid: String
     let type: PublisherType
-    let status: Status
     let hash, title, summary: String
     let images: [WelcomeImage]?
     let contentProvider: ContentProvider
 
     enum CodingKeys: String, CodingKey {
-        case uuid, type, status, hash, title, summary, images
+        case uuid, type, hash, title, summary, images
         case contentProvider = "content_provider"
     }
 }
@@ -211,7 +219,7 @@ enum WelcomeType: String, Codable {
     case tour = "tour"
 }
 
-typealias SearchObjectsRoutesList = [SearchObjectsRoutesElement]
+typealias Tours = [Tour]
 
 
 // This file was generated from JSON Schema using quicktype, do not modify it directly.
@@ -224,7 +232,6 @@ import Foundation
 // MARK: - WelcomeElement
 struct BaseRoute: Codable {
     let uuid: String
-    let status: Status
     let type, category: String
     let duration, distance: Int
     let placement: String
@@ -239,7 +246,7 @@ struct BaseRoute: Codable {
     let location: CityLocation
 
     enum CodingKeys: String, CodingKey {
-        case uuid, status, type, category, duration, distance, placement, map, hash, size, city, country
+        case uuid, type, category, duration, distance, placement, map, hash, size, city, country
         case contentProvider = "content_provider"
         case reviews, content, location
     }
@@ -274,7 +281,6 @@ enum AudioType: String, Codable {
 // MARK: - Child
 struct Child: Codable {
     let uuid: String
-    let status: Status
     let type: ChildType
     let hidden: Bool
     let hash: String
@@ -285,7 +291,7 @@ struct Child: Codable {
     let summary, desc, title: String
 
     enum CodingKeys: String, CodingKey {
-        case uuid, status, type, hidden, hash
+        case uuid, type, hidden, hash
         case triggerZones = "trigger_zones"
         case contentProvider = "content_provider"
         case images, location, summary, desc, title

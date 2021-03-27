@@ -19,9 +19,9 @@ class TourTableViewCell: UITableViewCell {
 //        if let image = tourModel.image {
 //            tourLogoImageView.image =
 //        }
-        tourLogoImageView.image = tourModel.image ?? UIImage(named: "house")
+        tourLogoImageView.image = tourModel.images[0] ?? UIImage(named: "house")
         nameLabel.text = tourModel.title
         typeLabel.text = tourModel.type.rawValue
-        durationLabel.text = tourModel.duration.description
+        durationLabel.text = tourModel.duration?.description
     }
 }
