@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NetworkManagerProtocol {
-    func fetchDataTour(symbol: String, completion: @escaping (Result<[SearchObjectsRoutesElement], Error>) -> Void)
+    func fetchDataTour(symbol: String, completion: @escaping (Result<[Tour], Error>) -> Void)
 }
 
 class NetworkManager {
@@ -45,7 +45,7 @@ class NetworkManager {
     
 }
 extension NetworkManager {
-    func fetchDataTours(symbol: String, completion: @escaping (Result<[SearchObjectsRoutesElement], Error>) -> Void) {
+    func fetchDataTours(symbol: String, completion: @escaping (Result<[Tour], Error>) -> Void) {
         let tourURL = makeUrl(for: symbol)
         dataTask = URLSession.shared.dataTask(with: tourURL!) { (data, response, error) in
             
@@ -60,7 +60,7 @@ extension NetworkManager {
             print("Response status code: \(response.statusCode)")
             do {
                 let decoder = JSONDecoder()
-                let jsonData = try decoder.decode(SearchObjectsRoutesList.self, from: data)
+                let jsonData = try decoder.decode(Tours.self, from: data)
                 print(jsonData)
                 DispatchQueue.main.async {
                     completion(.success(jsonData))
