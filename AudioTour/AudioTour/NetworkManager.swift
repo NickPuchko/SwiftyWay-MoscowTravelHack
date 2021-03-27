@@ -7,14 +7,16 @@
 
 import Foundation
 
-protocol NetworkManagerProtocol {
-    func fetchDataTour(symbol: String, completion: @escaping (Result<[Tour], Error>) -> Void)
-}
-
 class NetworkManager {
     
     private var dataTask: URLSessionDataTask?
-    let default_url = URL(string: "https://api.izi.travel/mtg/objects/search?languages=ru,en&includes=all&api_key=7c6c2db9-d237-4411-aa0e-f89125312494&query=Мурманск")
+    
+    private lazy var decoder: JSONDecoder = {
+        var result = JSONDecoder()
+        result.keyDecodingStrategy = .convertFromSnakeCase
+        return result
+    }()
+    
     private func makeUrl(for symbol: String) -> URL? {
         let token = "7c6c2db9-d237-4411-aa0e-f89125312494"
         var result = URLComponents()
@@ -24,6 +26,7 @@ class NetworkManager {
         result.query = "languages=ru,en&includes=all&api_key=\(token)&query=\(symbol)"
         return result.url
     }
+    
     private func makeUrlForAudio(uuid: String, audio_uuid: String) -> URL? {
         let token = "7c6c2db9-d237-4411-aa0e-f89125312494"
         var result = URLComponents()
@@ -33,6 +36,7 @@ class NetworkManager {
         result.query = "api_key=\(token)"
         return result.url
     }
+    
     private func makeUrlForImage(uuid: String, image_uuid: String) -> URL? {
         let token = "7c6c2db9-d237-4411-aa0e-f89125312494"
         var result = URLComponents()
@@ -42,13 +46,12 @@ class NetworkManager {
         result.query = "api_key=\(token)"
         return result.url
     }
-    
 }
+
 extension NetworkManager {
     func fetchDataTours(symbol: String, completion: @escaping (Result<[Tour], Error>) -> Void) {
         let tourURL = makeUrl(for: symbol)
         dataTask = URLSession.shared.dataTask(with: tourURL!) { (data, response, error) in
-            
             if let error = error {
                print("DataTask error: \(error.localizedDescription)")
                return
@@ -59,21 +62,18 @@ extension NetworkManager {
             }
             print("Response status code: \(response.statusCode)")
             do {
-                let decoder = JSONDecoder()
-                let jsonData = try decoder.decode(Tours.self, from: data)
+                
+                let jsonData = try self.decoder.decode([Tour].self, from: data)
                 print(jsonData)
-                DispatchQueue.main.async {
-                    completion(.success(jsonData))
-                }
-            }
-            catch let error {
+                completion(.success(jsonData))
+            } catch let error {
                 completion(.failure(error))
             }
         }
         dataTask?.resume()
     }
     
-    func fetchDataTour(symbol: String, completion: @escaping (Result<[BaseRoute], Error>) -> Void) {
+    func fetchDataTour(symbol: String, completion: @escaping (Result<[DetailedTour], Error>) -> Void) {
         let tourURL = makeUrl(for: symbol)
         dataTask = URLSession.shared.dataTask(with: tourURL!) { (data, response, error) in
             
@@ -87,14 +87,10 @@ extension NetworkManager {
             }
             print("Response status code: \(response.statusCode)")
             do {
-                let decoder = JSONDecoder()
-                let jsonData = try decoder.decode(BaseRouteList.self, from: data)
+                let jsonData = try self.decoder.decode([DetailedTour].self, from: data)
                 print(jsonData)
-                DispatchQueue.main.async {
-                    completion(.success(jsonData))
-                }
-            }
-            catch let error {
+                completion(.success(jsonData))
+            } catch let error {
                 completion(.failure(error))
             }
         }
@@ -107,17 +103,16 @@ extension NetworkManager {
                print("DataTask error: \(error.localizedDescription)")
                return
             }
-           guard let response = response as? HTTPURLResponse, let data = data else {
+            guard let response = response as? HTTPURLResponse, let data = data else {
                print("Empty Response")
                return
-           }
-           print("Response status code: \(response.statusCode)")
-            DispatchQueue.main.async {
-                completion(.success(data))
             }
+            print("Response status code: \(response.statusCode)")
+            completion(.success(data))
         }
         dataTask?.resume()
     }
+    
     func fetchImage(uuid: String, image_uuid: String, completion: @escaping (Result<Data, Error>) -> Void) {
         let audioURL = makeUrlForImage(uuid: uuid, image_uuid: image_uuid)
         dataTask = URLSession.shared.dataTask(with: audioURL!) { (data, response, error) in
@@ -125,14 +120,12 @@ extension NetworkManager {
                print("DataTask error: \(error.localizedDescription)")
                return
             }
-           guard let response = response as? HTTPURLResponse, let data = data else {
+            guard let response = response as? HTTPURLResponse, let data = data else {
                print("Empty Response")
                return
-           }
-           print("Response status code: \(response.statusCode)")
-            DispatchQueue.main.async {
-                completion(.success(data))
             }
+            print("Response status code: \(response.statusCode)")
+            completion(.success(data))
         }
         dataTask?.resume()
     }

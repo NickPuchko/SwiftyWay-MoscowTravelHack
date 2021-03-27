@@ -10,6 +10,7 @@ import Foundation
 class FeedModel {
     
     weak var feedViewController: FeedViewController!
+    lazy var networkManager = NetworkManager()
     
     init(feedViewController: FeedViewController) {
         self.feedViewController = feedViewController
@@ -18,9 +19,18 @@ class FeedModel {
     var tours: [Tour] = []
     
     func loadTours(in city: String) {
-        tours = [
-            
-        ]
-        feedViewController.feedView.toursTableView.reloadData()
+        networkManager.fetchDataTours(symbol: "Мурманск") { [unowned self] result in
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+                self.tours = []
+            case .success(let tours):
+                self.tours = tours
+            }
+            DispatchQueue.main.async {
+                self.feedViewController.feedView.toursTableView.reloadData()
+            }
+        }
     }
 }
+ 
