@@ -14,8 +14,8 @@ struct Tour {
     let category: Category
     let duration: Int
     let distance: Int
-    let route: [[Double]]
-    let bounds: [Double]
+    let route: [[Double]] = []
+    let bounds: [Double] = []
     
     init(title: String, childrenCount: Int, type: WelcomeType, category: Category,
          duration: Int?, distance: Int?, route: String, bounds: String) {
@@ -26,6 +26,6 @@ struct Tour {
         self.category = category
         self.duration = duration ?? 0
         self.distance = distance ?? 0
-        self.route = route.split {$0 == ";"}.map {$0.split {$0 == ","}}
+//        self.route = route.split {$0 == ";"}.map {$0.split {$0 == ","}}
     }
 }

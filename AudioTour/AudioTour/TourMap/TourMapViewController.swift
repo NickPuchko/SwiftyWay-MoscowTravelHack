@@ -10,6 +10,10 @@ import UIKit
 class TourMapViewController: UIViewController {
     
     init() {
-        
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init(coder: NSCoder) {
+        fatalError("not implemented")
     }
 }
