@@ -9,9 +9,11 @@ import UIKit
 
 class FeedViewController: UIViewController {
 
+    private var model: FeedModel!
+    
     lazy var feedCellIdentifier = TourTableViewCell.self.description()
     
-    private var feedView: FeedView {
+    var feedView: FeedView {
         view as! FeedView
     }
     
@@ -21,8 +23,13 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        model = FeedModel(feedViewController: self)
+        model.loadTours(in: "city")
+        setupViews()
+    }
+    
+    private func setupViews() {
         title = "City"
-        // Do any additional setup after loading the view.
     }
 }
 
@@ -31,7 +38,11 @@ extension FeedViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: feedCellIdentifier, for: indexPath)
-        // configure(...)
+        guard let tourCell = cell as? TourTableViewCell else {
+            return TourTableViewCell()
+        }
+        
+        tourCell.configure(tourModel: model.tours[indexPath.row])
         return cell
     }
 }

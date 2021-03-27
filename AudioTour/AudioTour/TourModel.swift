@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 struct Tour {
     let title: String
+    let image: UIImage? = nil
     let childrenCount: Int
     let type: WelcomeType
     let category: Category

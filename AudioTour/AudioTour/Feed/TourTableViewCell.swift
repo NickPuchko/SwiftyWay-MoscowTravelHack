@@ -19,5 +19,13 @@ class TourTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-//    func configure()
+    func configure(tourModel: Tour) {
+//        if let image = tourModel.image {
+//            tourLogoImageView.image =
+//        }
+        tourLogoImageView.image = tourModel.image ?? UIImage(named: "house")
+        nameLabel.text = tourModel.title
+        typeLabel.text = tourModel.type.rawValue
+        durationLabel.text = tourModel.duration.description
+    }
 }
