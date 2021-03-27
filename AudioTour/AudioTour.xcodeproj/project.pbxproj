@@ -9,8 +9,12 @@
 /* Begin PBXBuildFile section */
 		01789E96260F39B00088F773 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01789E95260F39B00088F773 /* FeedView.swift */; };
 		01789E9B260F43E70088F773 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01789E9A260F43E70088F773 /* MainNavigationController.swift */; };
+
+		244F259A260F4DA8006582AD /* TourMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244F2599260F4DA8006582AD /* TourMapViewController.swift */; };
+		244F259D260F4F3A006582AD /* TourModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244F259C260F4F3A006582AD /* TourModel.swift */; };
 		01789EA4260F51E50088F773 /* TourTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01789EA2260F51E50088F773 /* TourTableViewCell.swift */; };
 		01789EA5260F51E50088F773 /* TourTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01789EA3260F51E50088F773 /* TourTableViewCell.xib */; };
+
 		3C14F8CA9E8B7F637411A2EA /* Pods_AudioTour.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91DDBCE348C3209AFEA6CAE4 /* Pods_AudioTour.framework */; };
 		73F87A5D260F47E8000DD90D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F87A5C260F47E8000DD90D /* NetworkManager.swift */; };
 		73F87A60260F47F2000DD90D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F87A5F260F47F2000DD90D /* Model.swift */; };
@@ -23,8 +27,12 @@
 /* Begin PBXFileReference section */
 		01789E95260F39B00088F773 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		01789E9A260F43E70088F773 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+
+		244F2599260F4DA8006582AD /* TourMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourMapViewController.swift; sourceTree = "<group>"; };
+		244F259C260F4F3A006582AD /* TourModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourModel.swift; sourceTree = "<group>"; };
 		01789EA2260F51E50088F773 /* TourTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourTableViewCell.swift; sourceTree = "<group>"; };
 		01789EA3260F51E50088F773 /* TourTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TourTableViewCell.xib; sourceTree = "<group>"; };
+
 		73F87A5C260F47E8000DD90D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		73F87A5F260F47F2000DD90D /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		782059BC60679A247AA76DD6 /* Pods-AudioTour.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioTour.release.xcconfig"; path = "Target Support Files/Pods-AudioTour/Pods-AudioTour.release.xcconfig"; sourceTree = "<group>"; };
@@ -69,6 +77,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		244F2598260F4D8A006582AD /* TourMap */ = {
+			isa = PBXGroup;
+			children = (
+				244F2599260F4DA8006582AD /* TourMapViewController.swift */,
+			);
+			path = TourMap;
+			sourceTree = "<group>";
+		};
 		C3D4C470260E6309000BC7CB = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +106,7 @@
 		C3D4C47B260E6309000BC7CB /* AudioTour */ = {
 			isa = PBXGroup;
 			children = (
+				244F2598260F4D8A006582AD /* TourMap */,
 				01789E98260F39BC0088F773 /* Feed */,
 				C3D4C47C260E6309000BC7CB /* AppDelegate.swift */,
 				C3D4C485260E630A000BC7CB /* Assets.xcassets */,
@@ -98,6 +115,7 @@
 				73F87A5C260F47E8000DD90D /* NetworkManager.swift */,
 				73F87A5F260F47F2000DD90D /* Model.swift */,
 				01789E9A260F43E70088F773 /* MainNavigationController.swift */,
+				244F259C260F4F3A006582AD /* TourModel.swift */,
 			);
 			path = AudioTour;
 			sourceTree = "<group>";
@@ -229,7 +247,12 @@
 				01789E96260F39B00088F773 /* FeedView.swift in Sources */,
 				73F87A5D260F47E8000DD90D /* NetworkManager.swift in Sources */,
 				73F87A60260F47F2000DD90D /* Model.swift in Sources */,
+
+				244F259A260F4DA8006582AD /* TourMapViewController.swift in Sources */,
+				244F259D260F4F3A006582AD /* TourModel.swift in Sources */,
+
 				01789EA4260F51E50088F773 /* TourTableViewCell.swift in Sources */,
+
 				01789E9B260F43E70088F773 /* MainNavigationController.swift in Sources */,
 				C3D4C47D260E6309000BC7CB /* AppDelegate.swift in Sources */,
 			);
