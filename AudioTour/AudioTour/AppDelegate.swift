@@ -15,7 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let rootVC = FeedViewController(nibName: nil, bundle: nil)
+        let tour = Tour(title: "SOmeTitle", childrenCount: 20, type: .tour,
+                        category: .walk, duration: 1000, distance: 20,
+                        route: "20.0, 30.0", bounds: "59.7452159,30.090332,60.089675,30.559783")
+        let rootVC = TourMapViewController(tour: tour)
         let navVC = MainNavigationController(rootViewController: rootVC)
         let window = UIWindow()
         window.rootViewController = navVC
