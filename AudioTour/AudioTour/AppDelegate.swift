@@ -15,6 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let rootVC = FeedViewController(nibName: nil, bundle: nil)
+        let navVC = MainNavigationController(rootViewController: rootVC)
+        let window = UIWindow()
+        window.rootViewController = navVC
+        self.window = window
+        window.makeKeyAndVisible()
         return true
     }
 }
