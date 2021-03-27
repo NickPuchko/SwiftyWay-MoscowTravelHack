@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01027A76260FE3AB00EF803D /* ImageNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01027A75260FE3AB00EF803D /* ImageNetworkService.swift */; };
 		01789EB9260FB77B0088F773 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01789EB8260FB77B0088F773 /* AppDelegate.swift */; };
 		01789EBD260FB77B0088F773 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01789EBC260FB77B0088F773 /* FeedViewController.swift */; };
 		01789EC2260FB7800088F773 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01789EC1260FB7800088F773 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01027A75260FE3AB00EF803D /* ImageNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageNetworkService.swift; sourceTree = "<group>"; };
 		01789EB5260FB77B0088F773 /* TravelGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01789EB8260FB77B0088F773 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01789EBC260FB77B0088F773 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				01789EE4260FC56D0088F773 /* ToursNetworkService.swift */,
+				01027A75260FE3AB00EF803D /* ImageNetworkService.swift */,
 			);
 			path = Networkers;
 			sourceTree = "<group>";
@@ -127,7 +130,6 @@
 				C22246A20D9A957D69F9153C /* Pods-TravelGuide.debug.xcconfig */,
 				C70C83DF6AF45A4F41436664 /* Pods-TravelGuide.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -247,6 +249,7 @@
 			files = (
 				01789EE5260FC56D0088F773 /* ToursNetworkService.swift in Sources */,
 				01789EDB260FC1D80088F773 /* FeedView.swift in Sources */,
+				01027A76260FE3AB00EF803D /* ImageNetworkService.swift in Sources */,
 				01789ED3260FBE990088F773 /* MainNavigationController.swift in Sources */,
 				01789EBD260FB77B0088F773 /* FeedViewController.swift in Sources */,
 				01789EE0260FC4180088F773 /* Tour.swift in Sources */,
