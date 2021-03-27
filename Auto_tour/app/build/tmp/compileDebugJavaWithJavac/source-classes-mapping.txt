@@ -1,4 +1,0 @@
-com/example/auto_tour/BuildConfig.java
- com.example.auto_tour.BuildConfig
-com/example/auto_tour/databinding/ActivityMapsBinding.java
- com.example.auto_tour.databinding.ActivityMapsBinding

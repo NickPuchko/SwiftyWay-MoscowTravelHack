@@ -1,7 +1,0 @@
-#Sat Mar 27 02:00:08 MSK 2021
-base.0=C\:\\SF files\\Study After + projects\\Travel_Hack\\SwiftyWay-MoscowTravelHack\\Auto_tour\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-path.1=classes.dex
-renamed.1=classes2.dex
-path.0=classes.dex
-renamed.0=classes.dex
-base.1=C\:\\SF files\\Study After + projects\\Travel_Hack\\SwiftyWay-MoscowTravelHack\\Auto_tour\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\classes.dex
