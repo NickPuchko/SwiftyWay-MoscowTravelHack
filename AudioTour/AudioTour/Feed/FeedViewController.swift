@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import AVFoundation
 
 class FeedViewController: UIViewController {
 
-    lazy var feedCellIdentifier = TourTableViewCell.self.description()
+    private var model: FeedModel!
     
-    private var feedView: FeedView {
+    let feedCellIdentifier = "TourTableViewCell"
+    
+    var feedView: FeedView {
         view as! FeedView
     }
     
@@ -21,17 +24,29 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        model = FeedModel(feedViewController: self)
+        model.loadTours(in: "city")
+        setupViews()
+    }
+    
+    private func setupViews() {
         title = "City"
-        // Do any additional setup after loading the view.
+        feedView.toursTableView.register(UINib(nibName: feedCellIdentifier, bundle: nil), forCellReuseIdentifier: feedCellIdentifier)
     }
 }
 
 extension FeedViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { 1 }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        model.tours.count
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: feedCellIdentifier, for: indexPath)
-        // configure(...)
+        guard let tourCell = cell as? TourTableViewCell else {
+            return TourTableViewCell()
+        }
+        
+        tourCell.configure(tourModel: model.tours[indexPath.row])
         return cell
     }
 }

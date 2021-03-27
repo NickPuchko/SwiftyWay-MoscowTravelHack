@@ -14,10 +14,10 @@ class TourMapViewController: UIViewController {
     let mapView = MKMapView()
     
     // MARK: Properties
-    let tour: Tour
+    let tour: TourViewModel
     
     // MARK: Init
-    init(tour: Tour) {
+    init(tour: TourViewModel) {
         self.tour = tour
         super.init(nibName: nil, bundle: nil)
     }

@@ -15,9 +15,12 @@ class TourTableViewCell: UITableViewCell {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var categoryImageView: UIImageView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    func configure(tourModel: Tour) {
+//        if let image = tourModel.image {
+//            tourLogoImageView.image =
+//        }
+        nameLabel.text = tourModel.title
+        typeLabel.text = "Tour"
+        durationLabel.text = tourModel.duration?.description
     }
-    
-//    func configure()
 }
