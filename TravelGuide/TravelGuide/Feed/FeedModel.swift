@@ -27,10 +27,15 @@ class FeedModel {
             case .failure(let error):
                 print(error)
             case .success(let tours):
-                self.tours = tours.filter { $0.category != nil }
-                self.routeManager.getRoute(tourUuid: tours[0].uuid) { result in
-//                    print(result)
-                }
+                self.tours = tours.filter { $0.type == .tour }
+//                self.routeManager.getRoute(tourUuid: self.tours[0].uuid) { result in
+//                    switch result {
+//                    case .failure(let error):
+//                        print(error)
+//                    case .success(let route):
+//                        print(route)
+//                    }
+//                }
             }
         }
     }
