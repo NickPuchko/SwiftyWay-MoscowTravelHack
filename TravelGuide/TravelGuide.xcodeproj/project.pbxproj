@@ -28,6 +28,7 @@
 		01789EE9260FC71D0088F773 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 01789EE8260FC71D0088F773 /* Podfile */; };
 		16A8C31F29533BD7BD90B4A9 /* Pods_TravelGuide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D357DC0B6B61C08F01D5E39F /* Pods_TravelGuide.framework */; };
 		6AC97A572D6F54B88A623CE7 /* FeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9749BAFB84C3F3E5693A9 /* FeedViewCell.swift */; };
+		73F87ABF261017FC000DD90D /* DetailTourController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F87ABE261017FC000DD90D /* DetailTourController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		01789EE4260FC56D0088F773 /* ToursNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToursNetworkService.swift; sourceTree = "<group>"; };
 		01789EE8260FC71D0088F773 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		6AC9749BAFB84C3F3E5693A9 /* FeedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewCell.swift; sourceTree = "<group>"; };
+		73F87ABE261017FC000DD90D /* DetailTourController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailTourController.swift; path = ../../../../Documents/DetailTourController.swift; sourceTree = "<group>"; };
 		C22246A20D9A957D69F9153C /* Pods-TravelGuide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelGuide.debug.xcconfig"; path = "Target Support Files/Pods-TravelGuide/Pods-TravelGuide.debug.xcconfig"; sourceTree = "<group>"; };
 		C70C83DF6AF45A4F41436664 /* Pods-TravelGuide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelGuide.release.xcconfig"; path = "Target Support Files/Pods-TravelGuide/Pods-TravelGuide.release.xcconfig"; sourceTree = "<group>"; };
 		D357DC0B6B61C08F01D5E39F /* Pods_TravelGuide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TravelGuide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +129,7 @@
 				01789EDE260FC3BF0088F773 /* Entities */,
 				01789ED6260FBF540088F773 /* Feed */,
 				01789EB8260FB77B0088F773 /* AppDelegate.swift */,
+				73F87ABE261017FC000DD90D /* DetailTourController.swift */,
 				01789EC1260FB7800088F773 /* Assets.xcassets */,
 				01789EC3260FB7800088F773 /* LaunchScreen.storyboard */,
 				01789EC6260FB7800088F773 /* Info.plist */,
@@ -301,6 +304,7 @@
 				01027A9A260FF8CE00EF803D /* ScrollableStackView.swift in Sources */,
 				01789EDB260FC1D80088F773 /* FeedView.swift in Sources */,
 				01027A76260FE3AB00EF803D /* ImageNetworkService.swift in Sources */,
+				73F87ABF261017FC000DD90D /* DetailTourController.swift in Sources */,
 				01789ED3260FBE990088F773 /* MainNavigationController.swift in Sources */,
 				01789EBD260FB77B0088F773 /* FeedViewController.swift in Sources */,
 				01027A8B260FF88900EF803D /* DetailTourModel.swift in Sources */,
