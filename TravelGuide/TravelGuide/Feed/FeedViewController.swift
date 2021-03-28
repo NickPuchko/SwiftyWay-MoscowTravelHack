@@ -22,23 +22,15 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         feedModel = FeedModel(vc: self)
+        feedModel.loadTours()
     }
 
-    private var viewModels: [ViewModel] = [
-        ViewModel(
-                image: "",
-                title: "SOME cool title",
-                type: "walk",
-                duration: 26500,
-                rating: 9
-        ),
-        ViewModel(
-                image: "",
-                title: "SOME Other cool title",
-                type: "running",
-                duration: 38000,
-                rating: 0)
-    ]
+    private var viewModels: [ViewModel] = []
+
+    func updateViewModels(with viewModels: [ViewModel]) {
+        self.viewModels = viewModels
+        feedView.reloadData()
+    }
 }
 
 extension FeedViewController: UICollectionViewDataSource {
@@ -64,7 +56,7 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView,
                                layout collectionViewLayout: UICollectionViewLayout,
                                sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let ratio: CGFloat = 1.0
+        let ratio: CGFloat = 1.5
         let width = (collectionView.frame.width - Constants.padding - Constants.interItemSpacing)/2
         let height = ratio * width
         return CGSize(width: width, height: height)
@@ -82,9 +74,9 @@ enum Constants {
 }
 
 struct ViewModel {
-    let image: String
+    let image: Data?
     let title: String
-    let type: String
+    let type: Category?
     let duration: Int?
     let rating: Int?
 }
