@@ -39,12 +39,12 @@ class DetailTourModel {
 
     private func getImages(route: Route) {
         var viewModel = DetailViewModel(images: [])
-        serialQueue.async { [weak self] in
-            for image in route.content[0].images {
-                guard let _ = image.uuid else {
-                    continue
-                }
-                self?.group.enter()
+        for image in route.content[0].images {
+            group.enter()
+            serialQueue.async { [weak self] in
+//                guard let _ = image.uuid else {
+//                    continue
+//                }
                 self?.imageManager.getImage(
                         providerUuid: self?.tour.contentProvider.uuid ?? "",
                         image: image) { result in

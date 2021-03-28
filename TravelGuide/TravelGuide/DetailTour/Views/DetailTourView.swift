@@ -36,7 +36,7 @@ class DetailTourView: AutoLayoutView {
         return cv
     }()
 
-    private var viewModel: DetailViewModel?
+    var viewModel: DetailViewModel?
 
     private let ratingStack = UIStackView()
     var starImageViewsArray: [UIImageView] = []
@@ -270,6 +270,11 @@ class DetailTourView: AutoLayoutView {
     }
     @objc func onTapLetPath() {
         didTapContinue()
+    }
+
+    func updateViewModel(viewModel: DetailViewModel) {
+        self.viewModel = viewModel
+        collectionView.reloadData()
     }
 }
 extension DetailTourView: UICollectionViewDelegate {

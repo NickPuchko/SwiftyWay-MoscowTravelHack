@@ -32,7 +32,7 @@ class DetailTourViewController: UIViewController{
     }
     
     func updateView(with route: Route, tour: Tour, viewModel: DetailViewModel) {
-        print(viewModel)
+        detailTourView.updateViewModel(viewModel: viewModel)
         detailTourView.descriptionView.text = route.content[0].desc
         let rating = Int(tour.reviews?.ratingAverage ?? 0) ?? 0
         let filledStarsCount = (rating/2)
