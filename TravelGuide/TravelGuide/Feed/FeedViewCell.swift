@@ -43,6 +43,7 @@ class FeedViewCell: UICollectionViewCell {
         for i in 0..<5 {
             let imageView = UIImageView(image: UIImage(systemName: "star"))
             ratingStack.addArrangedSubview(imageView)
+            imageView.tintColor = .systemYellow
             starImageViewsArray.append(imageView)
         }
     }
@@ -58,7 +59,7 @@ class FeedViewCell: UICollectionViewCell {
             imageView.topAnchor.constraint(equalTo: safeArea.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: 100),
+            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
 
             durationLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -5.0),
             durationLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor),
@@ -67,6 +68,7 @@ class FeedViewCell: UICollectionViewCell {
             tourType.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -5.0),
 
             ratingStack.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 5.0),
+            ratingStack.trailingAnchor.constraint(lessThanOrEqualTo: tourType.leadingAnchor),
             ratingStack.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -5.0)
         ])
     }
@@ -84,7 +86,6 @@ class FeedViewCell: UICollectionViewCell {
         for i in 0..<halfFilledStarsCount {
             starImageViewsArray[filledStarsCount + i].image = UIImage(systemName: "star.leadinghalf.fill")
         }
-
 
     }
 }
