@@ -28,7 +28,9 @@
 		01789EE5260FC56D0088F773 /* ToursNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01789EE4260FC56D0088F773 /* ToursNetworkService.swift */; };
 		01789EE9260FC71D0088F773 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 01789EE8260FC71D0088F773 /* Podfile */; };
 		16A8C31F29533BD7BD90B4A9 /* Pods_TravelGuide.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D357DC0B6B61C08F01D5E39F /* Pods_TravelGuide.framework */; };
+		6AC9736F1F934A6B12789F2C /* DetailTourViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC974DEE1DB7E1515B93E1F /* DetailTourViewCell.swift */; };
 		6AC97A572D6F54B88A623CE7 /* FeedViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9749BAFB84C3F3E5693A9 /* FeedViewCell.swift */; };
+		6AC97F0867A0E5CA82D843FC /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9785119B859114740D64B /* DetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,8 @@
 		01789EE4260FC56D0088F773 /* ToursNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToursNetworkService.swift; sourceTree = "<group>"; };
 		01789EE8260FC71D0088F773 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		6AC9749BAFB84C3F3E5693A9 /* FeedViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewCell.swift; sourceTree = "<group>"; };
+		6AC974DEE1DB7E1515B93E1F /* DetailTourViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTourViewCell.swift; sourceTree = "<group>"; };
+		6AC9785119B859114740D64B /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		C22246A20D9A957D69F9153C /* Pods-TravelGuide.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelGuide.debug.xcconfig"; path = "Target Support Files/Pods-TravelGuide/Pods-TravelGuide.debug.xcconfig"; sourceTree = "<group>"; };
 		C70C83DF6AF45A4F41436664 /* Pods-TravelGuide.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TravelGuide.release.xcconfig"; path = "Target Support Files/Pods-TravelGuide/Pods-TravelGuide.release.xcconfig"; sourceTree = "<group>"; };
 		D357DC0B6B61C08F01D5E39F /* Pods_TravelGuide.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TravelGuide.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +82,7 @@
 				01027A8D260FF89600EF803D /* Views */,
 				01027A88260FF88900EF803D /* DetailTourModel.swift */,
 				01027A86260FF88900EF803D /* DetailTourViewController.swift */,
+				6AC9736F6FF4C8F28692D688 /* ViewModels */,
 			);
 			path = DetailTour;
 			sourceTree = "<group>";
@@ -86,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				01027A8E260FF8A300EF803D /* DetailTourView.swift */,
+				6AC974DEE1DB7E1515B93E1F /* DetailTourViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -165,6 +171,14 @@
 				01027AB1261004C300EF803D /* RouteNetworkService.swift */,
 			);
 			path = Networkers;
+			sourceTree = "<group>";
+		};
+		6AC9736F6FF4C8F28692D688 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				6AC9785119B859114740D64B /* DetailViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		75C6BAC2F1CBFE216E284ECE /* Frameworks */ = {
@@ -316,6 +330,8 @@
 				6AC97A572D6F54B88A623CE7 /* FeedViewCell.swift in Sources */,
 				01027AB2261004C300EF803D /* RouteNetworkService.swift in Sources */,
 				01027A98260FF8CE00EF803D /* UIView+Layout.swift in Sources */,
+				6AC97F0867A0E5CA82D843FC /* DetailViewModel.swift in Sources */,
+				6AC9736F1F934A6B12789F2C /* DetailTourViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

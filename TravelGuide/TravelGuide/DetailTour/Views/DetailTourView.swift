@@ -33,12 +33,12 @@ class DetailTourView: AutoLayoutView {
         
         return cv
     }()
-    
-    lazy var cosmosView: CosmosView = {
-        var view = CosmosView()
-        view.settings.starSize = 30
-        return view
-    }()
+
+    private var viewModel: DetailViewModel?
+
+    private let ratingStack = UIStackView()
+    var starImageViewsArray: [UIImageView] = []
+
     let separateView1 = UIView()
     let separateView2 = UIView()
     let separateView3 = UIView()
@@ -58,7 +58,6 @@ class DetailTourView: AutoLayoutView {
     let logoImageView = UIImageView()
     var logoImage = UIImage(systemName: "person.3")
     var organizationNameLabel = UILabel()
-    var summaryTextView = UITextView()
     var priceLabel = UILabel()
     
     init() {
@@ -73,6 +72,7 @@ class DetailTourView: AutoLayoutView {
         addSubview(scrollableStackView)
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.register(DetailTourViewCell.self, forCellWithReuseIdentifier: DetailTourViewCell.identifier)
         setupSeparatesViews()
         scrollableStackView.addArrangedSubview(collectionView)
         scrollableStackView.addArrangedSubview(separateView1)
@@ -149,9 +149,8 @@ class DetailTourView: AutoLayoutView {
     func setupOrganizationView() {
         organizationView.addSubview(logoImageView)
         organizationView.addSubview(organizationNameLabel)
-        organizationView.addSubview(summaryTextView)
         organizationView.addSubview(priceLabel)
-        organizationView.addSubview(cosmosView)
+        organizationView.addSubview(ratingStack)
         
         logoImageView.image = logoImage
         logoImageView.contentMode = .scaleAspectFit
@@ -159,17 +158,13 @@ class DetailTourView: AutoLayoutView {
         logoImageView.clipsToBounds = true
         
         priceLabel.text = "Бесплатно"
-        summaryTextView.text = "akjsandfjknsdfnsdfbsdjfkbhASDajsdasdjkasdjkhasdkjajsdnfjkasldfnjkalsdnfjklasndfjkasndflk"
-        summaryTextView.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
-        summaryTextView.textColor = .black
-        summaryTextView.isScrollEnabled = false
+
         
         organizationNameLabel.text = "Организация: SUKA BLYAT"
         organizationNameLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
         organizationNameLabel.textColor = .black
         
-        summaryTextView.isEditable = false
-        
+
     }
     func setupSeparatesViews() {
         separateView1.backgroundColor = .systemGray6
@@ -179,9 +174,8 @@ class DetailTourView: AutoLayoutView {
     func setupOrganizationViewConstraint() {
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
         organizationNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        summaryTextView.translatesAutoresizingMaskIntoConstraints = false
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
-        cosmosView.translatesAutoresizingMaskIntoConstraints = false
+        ratingStack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             logoImageView.leadingAnchor.constraint(equalTo: organizationView.leadingAnchor, constant: 16),
             logoImageView.topAnchor.constraint(equalTo: organizationView.topAnchor, constant: 16),
@@ -190,20 +184,15 @@ class DetailTourView: AutoLayoutView {
             
             organizationNameLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 12),
             organizationNameLabel.leadingAnchor.constraint(equalTo: logoImageView.leadingAnchor),
+
+            ratingStack.topAnchor.constraint(equalTo: logoImageView.centerYAnchor),
+            ratingStack.leadingAnchor.constraint(equalTo: logoImageView.trailingAnchor, constant: 8),
             
-            summaryTextView.topAnchor.constraint(equalTo: organizationNameLabel.bottomAnchor, constant: 8),
-            summaryTextView.leadingAnchor.constraint(equalTo: scrollableStackView.leadingAnchor, constant: 30),
-            summaryTextView.trailingAnchor.constraint(equalTo: scrollableStackView.trailingAnchor, constant: -30),
-            
-            cosmosView.topAnchor.constraint(equalTo: logoImageView.centerYAnchor),
-            cosmosView.leadingAnchor.constraint(equalTo: logoImageView.trailingAnchor, constant: 8),
-            
-            priceLabel.topAnchor.constraint(equalTo: cosmosView.topAnchor),
+            priceLabel.topAnchor.constraint(equalTo: ratingStack.topAnchor),
             priceLabel.trailingAnchor.constraint(equalTo: organizationView.trailingAnchor, constant: -16),
             
         
         ])
-        summaryTextView.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: .horizontal)
         priceLabel.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .horizontal)
     }
     func setupSeparateViewConstraint(){
@@ -223,6 +212,15 @@ class DetailTourView: AutoLayoutView {
         rateView.addSubview(nameLabel)
         //rateView.addSubview(rating)
         rateView.addSubview(categoryImageView)
+
+        ratingStack.axis = .horizontal
+        ratingStack.distribution = .fillEqually
+        for i in 0..<5 {
+            let imageView = UIImageView(image: UIImage(systemName: "star"))
+            ratingStack.addArrangedSubview(imageView)
+            imageView.tintColor = .systemYellow
+            starImageViewsArray.append(imageView)
+        }
         
         self.nameLabel.text = "Мурманск"
         self.nameLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 22)
@@ -252,7 +250,7 @@ class DetailTourView: AutoLayoutView {
     
     func setupConstraintRatingView() {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        cosmosView.translatesAutoresizingMaskIntoConstraints = false
+        ratingStack.translatesAutoresizingMaskIntoConstraints = false
         categoryImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
     
@@ -277,12 +275,14 @@ extension DetailTourView: UICollectionViewDelegate {
 }
 extension DetailTourView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        viewModel?.images.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .red
+        guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: DetailTourViewCell.identifier,
+                for: indexPath) as? DetailTourViewCell else { fatalError("unexpected collectionViewCell") }
+        cell.update(with: viewModel?.images[indexPath.item])
         cell.layer.cornerRadius = 8
         return cell
     }
@@ -291,3 +291,4 @@ extension DetailTourView: UICollectionViewDataSource, UICollectionViewDelegateFl
         return CGSize(width: collectionView.frame.height / 2, height: collectionView.frame.height - 30)
     }
 }
+
