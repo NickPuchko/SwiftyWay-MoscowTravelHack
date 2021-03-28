@@ -22,8 +22,7 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         feedModel = FeedModel(vc: self)
-//        feedModel.loadTours()
-//            print(result)
+        feedModel.loadTours()
         }
     }
 

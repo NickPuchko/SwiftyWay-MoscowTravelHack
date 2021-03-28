@@ -16,6 +16,7 @@
 		01027A99260FF8CE00EF803D /* AutoLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01027A96260FF8CE00EF803D /* AutoLayoutView.swift */; };
 		01027A9A260FF8CE00EF803D /* ScrollableStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01027A97260FF8CE00EF803D /* ScrollableStackView.swift */; };
 		01027AB2261004C300EF803D /* RouteNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01027AB1261004C300EF803D /* RouteNetworkService.swift */; };
+		01027AB526100CA900EF803D /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01027AB426100CA900EF803D /* Route.swift */; };
 		01789EB9260FB77B0088F773 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01789EB8260FB77B0088F773 /* AppDelegate.swift */; };
 		01789EBD260FB77B0088F773 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01789EBC260FB77B0088F773 /* FeedViewController.swift */; };
 		01789EC2260FB7800088F773 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01789EC1260FB7800088F773 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		01027A96260FF8CE00EF803D /* AutoLayoutView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoLayoutView.swift; sourceTree = "<group>"; };
 		01027A97260FF8CE00EF803D /* ScrollableStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableStackView.swift; sourceTree = "<group>"; };
 		01027AB1261004C300EF803D /* RouteNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteNetworkService.swift; sourceTree = "<group>"; };
+		01027AB426100CA900EF803D /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		01789EB5260FB77B0088F773 /* TravelGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01789EB8260FB77B0088F773 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01789EBC260FB77B0088F773 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				01789EDF260FC4180088F773 /* Tour.swift */,
+				01027AB426100CA900EF803D /* Route.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				01789ED3260FBE990088F773 /* MainNavigationController.swift in Sources */,
 				01789EBD260FB77B0088F773 /* FeedViewController.swift in Sources */,
 				01027A8B260FF88900EF803D /* DetailTourModel.swift in Sources */,
+				01027AB526100CA900EF803D /* Route.swift in Sources */,
 				01027A8F260FF8A300EF803D /* DetailTourView.swift in Sources */,
 				01027A89260FF88900EF803D /* DetailTourViewController.swift in Sources */,
 				01789EE0260FC4180088F773 /* Tour.swift in Sources */,
