@@ -49,7 +49,7 @@ class DetailTourViewController: UIViewController{
     
     private func showMapVC() {
         let vc = MapViewController()
-        let model = MapModel(vc: vc, selectedRoute: detailTourModel.route!)
+        let model = MapModel(vc: vc, selectedRoute: detailTourModel.route!, selectedTour: detailTourModel.tour)
         vc.mapModel = model
         navigationController?.pushViewController(vc, animated: true)
     }
