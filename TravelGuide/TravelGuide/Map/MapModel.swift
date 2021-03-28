@@ -22,7 +22,6 @@ class MapModel {
         tour = selectedTour
     }
     func playSound(){
-        print("aaaaaa")
         do {
             try AVAudioSession.sharedInstance().setMode(.default)
             try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
@@ -44,6 +43,8 @@ class MapModel {
         }
     }
     func loadAudio() {
+        mapViewController.mapView.playButton.isEnabled = false
+        mapViewController.mapView.stopButton.isEnabled = false
         if let audio = route.content[0].audio?[0] {
             audioManager.getAudio(providerUuid: tour.contentProvider.uuid, audio: audio) { result in
                 switch result {
@@ -51,6 +52,9 @@ class MapModel {
                     print(error)
                 case .success(let data):
                     self.audioData = data
+                    self.mapViewController.mapView.playButton.isEnabled = true
+                    self.mapViewController.mapView.stopButton.isEnabled = true
+
                 }
             }
 

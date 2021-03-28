@@ -28,15 +28,17 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         mapModel.loadAudio()
         setupMap()
-//        setupCL()
     }
     
     private func setupMap() {
         guard let location = mapModel.tour.location else {
             return
         }
-        let mapPoint = MKMapPoint(.init(latitude: location.latitude, longitude: location.longitude))
-        let mapRect = MKMapRect(origin: mapPoint, size: MKMapSize(width: 10000, height: 10000))
+        let radius: Double = 5000
+        var mapPoint = MKMapPoint(.init(latitude: location.latitude, longitude: location.longitude))
+        mapPoint.x -= radius
+        mapPoint.y -= radius
+        let mapRect = MKMapRect(origin: mapPoint, size: MKMapSize(width: radius * 2, height: radius * 2))
         mapView.mapView.setVisibleMapRect(mapRect, animated: true)
         
         let welcomeAnnotation = MKPointAnnotation()

@@ -23,6 +23,7 @@ class DetailTourViewController: UIViewController{
         view = DetailTourView(handleContinue: showAudioAlert)
         view.backgroundColor = .white
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -37,7 +38,7 @@ class DetailTourViewController: UIViewController{
     func updateView(with route: Route, tour: Tour, viewModel: DetailViewModel) {
         detailTourView.updateViewModel(viewModel: viewModel)
         detailTourView.descriptionView.text = route.content[0].desc
-        let rating = Int(tour.reviews?.ratingAverage ?? 0) ?? 0
+        let rating = Int(tour.reviews?.ratingAverage ?? 0) 
         let filledStarsCount = (rating/2)
         let halfFilledStarsCount = (rating % 2) == 0 ? 0 : 1
         for i in 0..<filledStarsCount {
@@ -64,6 +65,7 @@ class DetailTourViewController: UIViewController{
         let vc = MapViewController()
         let model = MapModel(vc: vc, selectedRoute: detailTourModel.route!, selectedTour: detailTourModel.tour)
         vc.mapModel = model
+        
         navigationController?.pushViewController(vc, animated: true)
     }
 

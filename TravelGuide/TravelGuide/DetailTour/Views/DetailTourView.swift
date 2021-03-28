@@ -219,7 +219,7 @@ class DetailTourView: AutoLayoutView {
 
         ratingStack.axis = .horizontal
         ratingStack.distribution = .fillEqually
-        for i in 0..<5 {
+        for _ in 0..<5 {
             let imageView = UIImageView(image: UIImage(systemName: "star"))
             ratingStack.addArrangedSubview(imageView)
             imageView.tintColor = .systemYellow

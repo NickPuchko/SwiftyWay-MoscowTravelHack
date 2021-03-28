@@ -24,6 +24,7 @@ class DetailTourModel {
     }
     
     func loadRoute() {
+        detailTourViewController.detailTourView.letPathButton.isEnabled = false
         routeManager.getRoute(tourUuid: tour.uuid) { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
@@ -31,20 +32,18 @@ class DetailTourModel {
                 print(error)
             case .success(let route):
                 guard let route = route else { return }
+                
                 strongSelf.route = route
+                strongSelf.detailTourViewController.detailTourView.letPathButton.isEnabled = true
                 strongSelf.getImages(route: route)
             }
         }
     }
 
     private func getImages(route: Route) {
-        var viewModel = DetailViewModel(images: [])
         for image in route.content[0].images {
             group.enter()
             serialQueue.async { [weak self] in
-//                guard let _ = image.uuid else {
-//                    continue
-//                }
                 self?.imageManager.getImage(
                         providerUuid: self?.tour.contentProvider.uuid ?? "",
                         image: image) { result in
