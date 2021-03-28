@@ -15,6 +15,8 @@ class FeedModel {
     var tours: [Tour] = []
     let images: [UIImage] = []
     
+    let routeManager = RouteNetworkService()
+    
     init(vc: FeedViewController) {
         feedViewController = vc
     }
@@ -25,7 +27,10 @@ class FeedModel {
             case .failure(let error):
                 print(error)
             case .success(let tours):
-                self.tours = tours
+                self.tours = tours.filter { $0.category != nil }
+                self.routeManager.getRoute(tourUuid: tours[0].uuid) { result in
+//                    print(result)
+                }
             }
         }
     }
