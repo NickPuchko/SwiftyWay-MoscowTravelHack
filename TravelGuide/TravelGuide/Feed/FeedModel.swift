@@ -30,6 +30,7 @@ class FeedModel {
             case .success(let tours):
                 self.tours = tours.filter { $0.type == .tour }
                 getImages(tours: tours)
+                
 
             }
         }
