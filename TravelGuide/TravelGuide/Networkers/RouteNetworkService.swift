@@ -26,7 +26,7 @@ class RouteNetworkService {
     }
     //https://api.izi.travel/mtgobjects/91653357-ad92-4de8-9ab9-224ca1c96316?languages=ru,en&includes=all&except=translations,publisher,download&api_key=7c6c2db9-d237-4411-aa0e-f89125312494
     
-    func getRoute(tourUuid: String, completion: @escaping (Result<Route, AFError>) -> Void) {
+    func getRoute(tourUuid: String, completion: @escaping (Result<Route?, AFError>) -> Void) {
         guard let url = makeURL(tourUuid: tourUuid) else {
             completion(.failure(.otherError))
             return
@@ -43,7 +43,7 @@ class RouteNetworkService {
                 }
                 do {
                     let routes = try self.decoder.decode([Route].self, from: json)
-                    completion(.success(routes[0]))
+                    completion(.success(routes.first))
                 } catch let error {
                     print(error)
                     completion(.failure(.otherError))
