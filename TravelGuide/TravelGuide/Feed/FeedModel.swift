@@ -16,6 +16,8 @@ class FeedModel {
     private let group = DispatchGroup()
     private let serialQueue = DispatchQueue(label: "private.serial.queue")
     
+    let routeManager = RouteNetworkService()
+    
     init(vc: FeedViewController) {
         feedViewController = vc
     }
@@ -27,7 +29,10 @@ class FeedModel {
                 print(error)
             case .success(let tours):
                 self.tours = tours
+                self.tours = tours.filter { $0.type == .tour }
                 getImages(tours: tours)
+//                self.routeManager.getRoute(tourUuid: tours[0].uuid) { result in
+//                }
             }
         }
     }

@@ -1,20 +1,28 @@
 PODS:
   - Alamofire (5.4.1)
+  - Cosmos (23.0.0)
   - Kingfisher (6.2.1)
+  - TinyConstraints (4.0.1)
 
 DEPENDENCIES:
   - Alamofire
+  - Cosmos
   - Kingfisher
+  - TinyConstraints
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Cosmos
     - Kingfisher
+    - TinyConstraints
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   Kingfisher: e71c6fac2aebb1262888cabc2cb13d313362a48f
+  TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
 
-PODFILE CHECKSUM: 18164d2ea0dcdbf5e58667edf7e37969e616460e
+PODFILE CHECKSUM: 387875acc3a044956825c490411c26ebcafe393d
 
 COCOAPODS: 1.10.0
