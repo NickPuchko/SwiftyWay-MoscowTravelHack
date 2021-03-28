@@ -17,7 +17,6 @@ struct Content: Codable {
     let audio: [Audio]?
     let images: [Image]
     let desc: String
-    // TODO: children
 }
 
 struct Audio: Codable {
