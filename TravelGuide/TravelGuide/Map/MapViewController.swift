@@ -17,7 +17,7 @@ class MapViewController: UIViewController {
     }
     
     override func loadView() {
-        view = MapView(delegate: self)
+        view = MapView(delegate: self, handlePlay: mapModel.playSound, handleStop: mapModel.stopSound)
     }
     
     override func viewDidLoad() {
