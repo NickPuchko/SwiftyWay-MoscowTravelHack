@@ -12,6 +12,8 @@ import TinyConstraints
 
 class DetailTourView: AutoLayoutView {
     
+    var didTapContinue: () -> Void
+    
     let scrollableStackView: ScrollableStackView = {
         let config: ScrollableStackView.Config = ScrollableStackView.Config(
                 stack: ScrollableStackView.Config.Stack(axis: .vertical, distribution: .fill,
@@ -56,12 +58,13 @@ class DetailTourView: AutoLayoutView {
     
     //organizationView
     let logoImageView = UIImageView()
-    var logoImage = UIImage()
+    var logoImage = UIImage(systemName: "person.3")
     var organizationNameLabel = UILabel()
     var summaryTextView = UITextView()
     var priceLabel = UILabel()
     
-    init() {
+    init(handleContinue: @escaping () -> Void) {
+        didTapContinue = handleContinue
         super.init(frame: .zero)
         setup()
     }
@@ -69,6 +72,7 @@ class DetailTourView: AutoLayoutView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     private func setup() {
         addSubview(scrollableStackView)
         collectionView.delegate = self
@@ -153,7 +157,7 @@ class DetailTourView: AutoLayoutView {
         organizationView.addSubview(priceLabel)
         organizationView.addSubview(cosmosView)
         
-        logoImageView.image = UIImage(named: "no_image")
+        logoImageView.image = logoImage
         logoImageView.contentMode = .scaleAspectFit
         logoImageView.layer.cornerRadius = 10
         logoImageView.clipsToBounds = true
@@ -227,6 +231,8 @@ class DetailTourView: AutoLayoutView {
         self.nameLabel.text = "Мурманск"
         self.nameLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 22)
         self.nameLabel.textColor = .black
+        nameLabel.lineBreakMode = .byWordWrapping
+        nameLabel.numberOfLines = 2
         
 //        rating.text = " Рейтинг: \(123123)"
 //        rating.font = UIFont(name: "AppleSDGothicNeo-Thin", size: 18)
@@ -237,6 +243,7 @@ class DetailTourView: AutoLayoutView {
     func setupTextView() {
         descriptionView.text = "BKAHSDBHJASBDKJHABSDKHJASBDasdbhahsjdabsdasdnasldnfsdlfnlsakjdfnksadfnljk"
         descriptionView.font = UIFont(name: "AppleSDGothicNeo-Light", size: 14)
+        descriptionView.isEditable = false
     }
     
     func setupTextViewConstraint() {
@@ -254,6 +261,7 @@ class DetailTourView: AutoLayoutView {
         NSLayoutConstraint.activate([
     
             nameLabel.leadingAnchor.constraint(equalTo: rateView.leadingAnchor, constant: 20),
+            nameLabel.trailingAnchor.constraint(lessThanOrEqualTo: categoryImageView.leadingAnchor, constant: -10),
             nameLabel.topAnchor.constraint(equalTo: rateView.topAnchor, constant: 20),
             
             categoryImageView.trailingAnchor.constraint(equalTo: rateView.trailingAnchor, constant: -20),
@@ -263,7 +271,7 @@ class DetailTourView: AutoLayoutView {
         ])
     }
     @objc func onTapLetPath() {
-        print("tapped letPath")
+        didTapContinue()
     }
 }
 extension DetailTourView: UICollectionViewDelegate {

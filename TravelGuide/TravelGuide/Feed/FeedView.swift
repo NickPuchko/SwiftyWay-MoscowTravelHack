@@ -39,4 +39,8 @@ class FeedView: UIView {
             collectionView.bottomAnchor.constraint(equalTo: collectionView.superview!.bottomAnchor)
         ])
     }
+
+    func reloadData() {
+        collectionView.reloadData()
+    }
 }
