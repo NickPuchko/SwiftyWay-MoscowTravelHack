@@ -12,6 +12,8 @@ import TinyConstraints
 
 class DetailTourView: AutoLayoutView {
     
+    var didTapContinue: () -> Void
+    
     let scrollableStackView: ScrollableStackView = {
         let config: ScrollableStackView.Config = ScrollableStackView.Config(
                 stack: ScrollableStackView.Config.Stack(axis: .vertical, distribution: .fill,
@@ -61,7 +63,8 @@ class DetailTourView: AutoLayoutView {
     var summaryTextView = UITextView()
     var priceLabel = UILabel()
     
-    init() {
+    init(handleContinue: @escaping () -> Void) {
+        didTapContinue = handleContinue
         super.init(frame: .zero)
         setup()
     }
@@ -69,6 +72,7 @@ class DetailTourView: AutoLayoutView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     private func setup() {
         addSubview(scrollableStackView)
         collectionView.delegate = self
@@ -267,7 +271,7 @@ class DetailTourView: AutoLayoutView {
         ])
     }
     @objc func onTapLetPath() {
-        print("tapped letPath")
+        didTapContinue()
     }
 }
 extension DetailTourView: UICollectionViewDelegate {

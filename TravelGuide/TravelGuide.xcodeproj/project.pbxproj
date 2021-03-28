@@ -17,6 +17,9 @@
 		01027A9A260FF8CE00EF803D /* ScrollableStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01027A97260FF8CE00EF803D /* ScrollableStackView.swift */; };
 		01027AB2261004C300EF803D /* RouteNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01027AB1261004C300EF803D /* RouteNetworkService.swift */; };
 		01027AB526100CA900EF803D /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01027AB426100CA900EF803D /* Route.swift */; };
+		01027AB92610250600EF803D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01027AB82610250600EF803D /* MapViewController.swift */; };
+		01027ABD2610251500EF803D /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01027ABC2610251500EF803D /* MapModel.swift */; };
+		01027AC0261029A400EF803D /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01027ABF261029A400EF803D /* MapView.swift */; };
 		01789EB9260FB77B0088F773 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01789EB8260FB77B0088F773 /* AppDelegate.swift */; };
 		01789EBD260FB77B0088F773 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01789EBC260FB77B0088F773 /* FeedViewController.swift */; };
 		01789EC2260FB7800088F773 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01789EC1260FB7800088F773 /* Assets.xcassets */; };
@@ -42,6 +45,9 @@
 		01027A97260FF8CE00EF803D /* ScrollableStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableStackView.swift; sourceTree = "<group>"; };
 		01027AB1261004C300EF803D /* RouteNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteNetworkService.swift; sourceTree = "<group>"; };
 		01027AB426100CA900EF803D /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		01027AB82610250600EF803D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		01027ABC2610251500EF803D /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
+		01027ABF261029A400EF803D /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		01789EB5260FB77B0088F773 /* TravelGuide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGuide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01789EB8260FB77B0088F773 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01789EBC260FB77B0088F773 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +107,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		01027AB7261024DF00EF803D /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				01027AB82610250600EF803D /* MapViewController.swift */,
+				01027ABC2610251500EF803D /* MapModel.swift */,
+				01027ABF261029A400EF803D /* MapView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		01789EAC260FB77B0088F773 = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +139,7 @@
 		01789EB7260FB77B0088F773 /* TravelGuide */ = {
 			isa = PBXGroup;
 			children = (
+				01027AB7261024DF00EF803D /* Map */,
 				01027A91260FF8B300EF803D /* Extensions */,
 				01027A85260FF87500EF803D /* DetailTour */,
 				01789EE3260FC4FF0088F773 /* Networkers */,
@@ -305,6 +322,8 @@
 				01789EDB260FC1D80088F773 /* FeedView.swift in Sources */,
 				01027A76260FE3AB00EF803D /* ImageNetworkService.swift in Sources */,
 				01789ED3260FBE990088F773 /* MainNavigationController.swift in Sources */,
+				01027AC0261029A400EF803D /* MapView.swift in Sources */,
+				01027AB92610250600EF803D /* MapViewController.swift in Sources */,
 				01789EBD260FB77B0088F773 /* FeedViewController.swift in Sources */,
 				01027A8B260FF88900EF803D /* DetailTourModel.swift in Sources */,
 				01027AB526100CA900EF803D /* Route.swift in Sources */,
@@ -313,6 +332,7 @@
 				01789EE0260FC4180088F773 /* Tour.swift in Sources */,
 				01789EB9260FB77B0088F773 /* AppDelegate.swift in Sources */,
 				01789ED8260FC1310088F773 /* FeedModel.swift in Sources */,
+				01027ABD2610251500EF803D /* MapModel.swift in Sources */,
 				6AC97A572D6F54B88A623CE7 /* FeedViewCell.swift in Sources */,
 				01027AB2261004C300EF803D /* RouteNetworkService.swift in Sources */,
 				01027A98260FF8CE00EF803D /* UIView+Layout.swift in Sources */,
