@@ -23,7 +23,7 @@ class DetailTourView: AutoLayoutView {
         )
         return ScrollableStackView(config: config)
     }()
-    
+    //let closure : () -> ()
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)

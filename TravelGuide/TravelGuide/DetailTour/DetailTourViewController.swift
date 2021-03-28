@@ -7,8 +7,11 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 class DetailTourViewController: UIViewController{
+    
+    var player: AVAudioPlayer?
     
     var detailTourModel: DetailTourModel!
     
