@@ -8,5 +8,7 @@ target 'TravelGuide' do
   # Pods for TravelGuide
   pod 'Alamofire'
   pod 'Kingfisher'
+  pod 'Cosmos'
+  pod 'TinyConstraints'
 
 end

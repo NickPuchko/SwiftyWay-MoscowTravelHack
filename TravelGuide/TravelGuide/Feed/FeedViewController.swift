@@ -22,6 +22,9 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         feedModel = FeedModel(vc: self)
+//        feedModel.loadTours()
+//            print(result)
+        }
     }
 
     private var viewModels: [ViewModel] = [
@@ -39,7 +42,7 @@ class FeedViewController: UIViewController {
                 duration: 38000,
                 rating: 0)
     ]
-}
+
 
 extension FeedViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
