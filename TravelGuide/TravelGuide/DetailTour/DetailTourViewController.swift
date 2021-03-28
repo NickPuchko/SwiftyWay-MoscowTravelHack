@@ -11,14 +11,27 @@ import UIKit
 class DetailTourViewController: UIViewController{
     
     var detailTourModel: DetailTourModel!
-    private let detailTourView = DetailTourView()
+    
+    var detailTourView: DetailTourView {
+        view as! DetailTourView
+    }
     
     override func loadView() {
-        view = detailTourView
+        view = DetailTourView()
         view.backgroundColor = .white
-        //setup()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViews()
+        detailTourModel.loadRoute()
+    }
+    
+    private func setupViews() {
+        detailTourView.nameLabel.text = detailTourModel.tour.title
+        detailTourView.organizationNameLabel.text = detailTourModel.tour.contentProvider.name
+    }
+    
+    func updateView(with route: Route) {
+        detailTourView.descriptionView.text = route.content[0].desc
     }
 }
