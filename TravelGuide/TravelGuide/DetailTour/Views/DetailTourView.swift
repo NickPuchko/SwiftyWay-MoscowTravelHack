@@ -29,17 +29,19 @@ class DetailTourView: AutoLayoutView {
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        cv.backgroundColor = .blue
+        cv.backgroundColor = .white
         
         return cv
     }()
     
     lazy var cosmosView: CosmosView = {
         var view = CosmosView()
-        view.settings.starSize = 25
+        view.settings.starSize = 30
         return view
     }()
-    
+    let separateView1 = UIView()
+    let separateView2 = UIView()
+    let separateView3 = UIView()
     let rateView = UIView()
     let descriptionView = UITextView()
     let letPathView = UIView()
@@ -50,7 +52,7 @@ class DetailTourView: AutoLayoutView {
     let nameLabel = UILabel()
     let categoryImage = UIImage()
     let categoryImageView = UIImageView()
-    let rating = UILabel()
+    //let rating = UILabel()
     
     //organizationView
     let logoImageView = UIImageView()
@@ -71,25 +73,27 @@ class DetailTourView: AutoLayoutView {
         addSubview(scrollableStackView)
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        self.scrollableStackView.addArrangedSubview(collectionView)
+        setupSeparatesViews()
+        scrollableStackView.addArrangedSubview(collectionView)
+        scrollableStackView.addArrangedSubview(separateView1)
         setupNameLabel()
         setupRatingView()
-        
-        rateView.backgroundColor = .green
+        rateView.backgroundColor = .white
         rateView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         scrollableStackView.addArrangedSubview(rateView)
         
         setupTextView()
-        descriptionView.backgroundColor = .yellow
+        descriptionView.backgroundColor = .white
         descriptionView.isScrollEnabled = false
         scrollableStackView.addArrangedSubview(descriptionView)
+        scrollableStackView.addArrangedSubview(separateView2)
         setupTextViewConstraint()
         
         setupOrganizationView()
-        organizationView.backgroundColor = .brown
+        organizationView.backgroundColor = .white
         organizationView.heightAnchor.constraint(equalToConstant: 200).isActive = true
         scrollableStackView.addArrangedSubview(organizationView)
+        scrollableStackView.addArrangedSubview(separateView3)
         
         addSubview(letPathView)
         letPathView.addSubview(letPathButton)
@@ -126,8 +130,10 @@ class DetailTourView: AutoLayoutView {
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.heightAnchor.constraint(equalTo: scrollableStackView.heightAnchor, multiplier: 0.3)
         ])
+        setupSeparateViewConstraint()
         setupConstraintRatingView()
         setupOrganizationViewConstraint()
+        
     
     }
     
@@ -140,7 +146,6 @@ class DetailTourView: AutoLayoutView {
         self.letPathButton.clipsToBounds = false
         self.letPathButton.addTarget(self, action: #selector(onTapLetPath), for: .touchUpInside)
     }
-    
     func setupOrganizationView() {
         organizationView.addSubview(logoImageView)
         organizationView.addSubview(organizationNameLabel)
@@ -148,26 +153,28 @@ class DetailTourView: AutoLayoutView {
         organizationView.addSubview(priceLabel)
         organizationView.addSubview(cosmosView)
         
-        logoImageView.image = UIImage(named: "figure.walk")
+        logoImageView.image = UIImage(named: "no_image")
         logoImageView.contentMode = .scaleAspectFit
-        logoImageView.layer.borderWidth = 1
-        logoImageView.layer.masksToBounds = false
-        logoImageView.layer.borderColor = UIColor.black.cgColor
-        logoImageView.layer.cornerRadius = logoImageView.frame.height / 2
+        logoImageView.layer.cornerRadius = 10
         logoImageView.clipsToBounds = true
         
-        priceLabel.text = "Бесп."
-        summaryTextView.text = "akjsandfjknsdfnsdfbsdjfkbhASD"
-        summaryTextView.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
+        priceLabel.text = "Бесплатно"
+        summaryTextView.text = "akjsandfjknsdfnsdfbsdjfkbhASDajsdasdjkasdjkhasdkjajsdnfjkasldfnjkalsdnfjklasndfjkasndflk"
+        summaryTextView.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 18)
         summaryTextView.textColor = .black
         summaryTextView.isScrollEnabled = false
         
         organizationNameLabel.text = "Организация: SUKA BLYAT"
         organizationNameLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 20)
-        organizationNameLabel.textColor = .yellow
+        organizationNameLabel.textColor = .black
         
         summaryTextView.isEditable = false
         
+    }
+    func setupSeparatesViews() {
+        separateView1.backgroundColor = .systemGray6
+        separateView2.backgroundColor = .systemGray6
+        separateView3.backgroundColor = .systemGray6
     }
     func setupOrganizationViewConstraint() {
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -178,49 +185,65 @@ class DetailTourView: AutoLayoutView {
         NSLayoutConstraint.activate([
             logoImageView.leadingAnchor.constraint(equalTo: organizationView.leadingAnchor, constant: 16),
             logoImageView.topAnchor.constraint(equalTo: organizationView.topAnchor, constant: 16),
-            logoImageView.heightAnchor.constraint(equalToConstant: 60),
+            logoImageView.heightAnchor.constraint(equalToConstant: 50),
             logoImageView.widthAnchor.constraint(equalTo: logoImageView.heightAnchor),
             
-            organizationNameLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 8),
+            organizationNameLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 12),
             organizationNameLabel.leadingAnchor.constraint(equalTo: logoImageView.leadingAnchor),
             
             summaryTextView.topAnchor.constraint(equalTo: organizationNameLabel.bottomAnchor, constant: 8),
-            summaryTextView.leadingAnchor.constraint(equalTo: logoImageView.leadingAnchor),
-            
-            priceLabel.topAnchor.constraint(equalTo: organizationNameLabel.bottomAnchor, constant: 8),
-            priceLabel.trailingAnchor.constraint(equalTo: organizationView.trailingAnchor, constant: -16),
-            summaryTextView.trailingAnchor.constraint(lessThanOrEqualTo: priceLabel.leadingAnchor),
+            summaryTextView.leadingAnchor.constraint(equalTo: scrollableStackView.leadingAnchor, constant: 30),
+            summaryTextView.trailingAnchor.constraint(equalTo: scrollableStackView.trailingAnchor, constant: -30),
             
             cosmosView.topAnchor.constraint(equalTo: logoImageView.centerYAnchor),
-            cosmosView.leadingAnchor.constraint(equalTo: logoImageView.trailingAnchor, constant: 8)
+            cosmosView.leadingAnchor.constraint(equalTo: logoImageView.trailingAnchor, constant: 8),
+            
+            priceLabel.topAnchor.constraint(equalTo: cosmosView.topAnchor),
+            priceLabel.trailingAnchor.constraint(equalTo: organizationView.trailingAnchor, constant: -16),
+            
+        
         ])
         summaryTextView.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: .horizontal)
         priceLabel.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .horizontal)
     }
+    func setupSeparateViewConstraint(){
+        separateView1.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            separateView1.widthAnchor.constraint(equalTo: collectionView.widthAnchor),
+            separateView1.heightAnchor.constraint(equalToConstant: 12),
+            
+            separateView2.widthAnchor.constraint(equalTo: collectionView.widthAnchor),
+            separateView2.heightAnchor.constraint(equalToConstant: 12),
+            
+            separateView3.widthAnchor.constraint(equalTo: collectionView.widthAnchor),
+            separateView3.heightAnchor.constraint(equalToConstant: 12)
+        ])
+    }
     func setupRatingView() {
         rateView.addSubview(nameLabel)
-        rateView.addSubview(rating)
+        //rateView.addSubview(rating)
         rateView.addSubview(categoryImageView)
         
         self.nameLabel.text = "Мурманск"
         self.nameLabel.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 22)
         self.nameLabel.textColor = .black
         
-        rating.text = " Рейтинг: \(123123)"
-        categoryImageView.image = UIImage(named: "figure.walk")
+//        rating.text = " Рейтинг: \(123123)"
+//        rating.font = UIFont(name: "AppleSDGothicNeo-Thin", size: 18)
+        categoryImageView.image = UIImage(systemName: "figure.walk")
         
         categoryImageView.contentMode = .scaleAspectFit
     }
     func setupTextView() {
-        descriptionView.text = "BKAHSDBHJASBDKJHABSDKHJASBDasdbhahsjdabsdasd"
-        descriptionView.font = UIFont(name: "AppleSDGothicNeo-Bold", size: 16)
+        descriptionView.text = "BKAHSDBHJASBDKJHABSDKHJASBDasdbhahsjdabsdasdnasldnfsdlfnlsakjdfnksadfnljk"
+        descriptionView.font = UIFont(name: "AppleSDGothicNeo-Light", size: 14)
     }
     
     func setupTextViewConstraint() {
         descriptionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            descriptionView.topAnchor.constraint(equalTo: rateView.bottomAnchor, constant: 10),
-            descriptionView.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor, constant: -30)
+            descriptionView.leadingAnchor.constraint(equalTo: scrollableStackView.leadingAnchor, constant: 30),
+            descriptionView.trailingAnchor.constraint(equalTo: scrollableStackView.trailingAnchor, constant: -30)
         ])
     }
     
@@ -228,14 +251,10 @@ class DetailTourView: AutoLayoutView {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         cosmosView.translatesAutoresizingMaskIntoConstraints = false
         categoryImageView.translatesAutoresizingMaskIntoConstraints = false
-        rating.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
     
             nameLabel.leadingAnchor.constraint(equalTo: rateView.leadingAnchor, constant: 20),
             nameLabel.topAnchor.constraint(equalTo: rateView.topAnchor, constant: 20),
-            
-            rating.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor, constant: -4),
-            rating.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
             
             categoryImageView.trailingAnchor.constraint(equalTo: rateView.trailingAnchor, constant: -20),
             categoryImageView.topAnchor.constraint(equalTo: rateView.topAnchor, constant: 20),
@@ -254,7 +273,7 @@ extension DetailTourView: UICollectionViewDelegate {
 }
 extension DetailTourView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let rootVC = FeedViewController()
+        let rootVC = DetailTourViewController()
         let navVC = MainNavigationController(rootViewController: rootVC)
         let window = UIWindow()
         window.rootViewController = navVC
