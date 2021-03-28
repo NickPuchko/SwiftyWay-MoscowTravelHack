@@ -28,11 +28,9 @@ class FeedModel {
             case .failure(let error):
                 print(error)
             case .success(let tours):
-                self.tours = tours
                 self.tours = tours.filter { $0.type == .tour }
                 getImages(tours: tours)
-//                self.routeManager.getRoute(tourUuid: tours[0].uuid) { result in
-//                }
+
             }
         }
     }
