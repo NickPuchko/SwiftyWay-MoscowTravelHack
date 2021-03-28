@@ -49,7 +49,13 @@ extension FeedViewController: UICollectionViewDataSource {
 }
 
 extension FeedViewController: UICollectionViewDelegate {
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let tour = feedModel.tours[indexPath.row]
+        let vc = DetailTourViewController()
+        let detailTourModel = DetailTourModel(vc: vc, selectedTour: tour)
+        vc.detailTourModel = detailTourModel
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension FeedViewController: UICollectionViewDelegateFlowLayout {
