@@ -14,7 +14,7 @@ struct Route: Codable {
 }
 
 struct Content: Codable {
-//    let audio: [Audio]
+    let audio: [Audio]?
     let images: [Image]
     let desc: String
     // TODO: children
@@ -28,5 +28,5 @@ struct Audio: Codable {
 
 struct Map: Codable {
     let bounds: String
-    let route: String
+    let route: String?
 }
